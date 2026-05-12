@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Supermart</string>
+    <string name="warning_text">A warning to all users who do not have an account. Users with ready made accounts are safer as their transaction records are kept stored and intact ready for review at any moment,  however the same cannot be said about users signed in as guests to have a safer records of your transaction and easy tracing of potential errors that may be encountered make sure to make an account instead of usual transactions as a guest. </string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="deep_space">#0F0F0F</color>
+    <color name="card_surface">#1A1A1A</color>
+    <color name="accent_primary">#FFBB86FC</color>
+    <color name="accent_secondary">#03DAC6</color>
+    <color name="text_secondary">#AAAAAA</color>
+    <color name="error_red">#FF5252</color>
+    <color name="mpesa_green">#46BD18</color>
+</resources>

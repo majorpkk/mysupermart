@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@android:drawable/ic_menu_today"
+            android:title="Shop Products" />
+        <item
+            android:id="@+id/nav_orders"
+            android:icon="@android:drawable/ic_menu_agenda"
+            android:title="My Orders" />
+        <item
+            android:id="@+id/nav_cart"
+            android:icon="@android:drawable/ic_menu_delete"
+            android:title="My Cart" />
+
+    </group>
+
+    <!-- Section for Account Actions -->
+    <item android:title="Account">
+        <menu>
+            <item
+                android:id="@+id/nav_signin"
+                android:icon="@android:drawable/ic_menu_info_details"
+                android:title="Sign In" />
+            <item
+                android:id="@+id/nav_signup"
+                android:icon="@android:drawable/ic_menu_add"
+                android:title="Sign Up" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@android:drawable/ic_lock_power_off"
+                android:title="Logout" />
+        </menu>
+    </item>
+
+</menu>
