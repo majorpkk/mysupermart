@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         // 4. API and Products RecyclerView Setup
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
         val progressBar = findViewById<ProgressBar>(R.id.progressbar)
-        val api = "https://paamajor1.alwaysdata.net/api/get_product"
+        val api = "https://dancan1.alwaysdata.net/api/get_product"
 
         val helper = ApiHelper(applicationContext)
         helper.loadProducts(api, recyclerView, progressBar)

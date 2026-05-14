@@ -30,7 +30,7 @@ class Signin : AppCompatActivity() {
         signinbutton.setOnClickListener {
             // Initialize ApiHelper
             val helper = ApiHelper(applicationContext)
-            val api = "https://paamajor1.alwaysdata.net/api/signin"
+            val api = "https://dancan1.alwaysdata.net/api/signin"
 
             // Create RequestParams
             val data = RequestParams()

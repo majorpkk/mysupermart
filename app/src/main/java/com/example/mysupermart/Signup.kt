@@ -35,7 +35,7 @@ class Signup : AppCompatActivity() {
         
         signupbutton.setOnClickListener {
             val helper = ApiHelper(applicationContext)
-            val api = "https://paamajor1.alwaysdata.net/api/signup"
+            val api = "https://dancan1.alwaysdata.net/api/signup"
 
             val data = RequestParams()
             data.put("username", username.text.toString())
@@ -44,6 +44,13 @@ class Signup : AppCompatActivity() {
             data.put("phone", phone.text.toString())
 
             helper.post(api, data)
+
         }
+
+        if ("message"=="success"){
+            val intent= Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }

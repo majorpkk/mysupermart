@@ -40,14 +40,14 @@ class PaymentActivity : AppCompatActivity() {
         description.text=productdescription
         cost.text="ksh $productcost"
 
-        val imageUrl = "https://paamajor1.alwaysdata.net/static/images/${productphoto}"
+        val imageUrl = "https://dancan.alwaysdata.net/static/images/${productphoto}"
 
         Glide.with(this)
             .load(imageUrl)
             .placeholder(R.drawable.ic_launcher_background)
             .into(image)
 
-        val api="https://paamajor1.alwaysdata.net/api/mpesa_payment"
+        val api="https://dancan1.alwaysdata.net/api/mpesa_payment"
 
         purchasebutton.setOnClickListener {
             val helper= ApiHelper(this)

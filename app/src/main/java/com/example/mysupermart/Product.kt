@@ -45,7 +45,7 @@ class ProductAdapter(private var productList: List<Product>) :
         holder.txtDesc.text = product.product_description ?: "No description"
         holder.txtPrice.text = "Ksh ${product.product_cost}"
 
-        val imageUrl = "https://paamajor.alwaysdata.net/static/images/${product.product_photo}"
+        val imageUrl = "https://dancan1.alwaysdata.net/static/images/${product.product_photo}"
 
         Glide.with(holder.itemView.context)
             .load(imageUrl)

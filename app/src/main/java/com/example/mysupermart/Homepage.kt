@@ -43,7 +43,7 @@ class Homepage : AppCompatActivity() {
         
         val signin = findViewById<Button>(R.id.signin)
         val signuptext = findViewById<TextView>(R.id.sign_up)
-        val username = findViewById<EditText>(R.id.username)
+        val email = findViewById<EditText>(R.id.email)
         val password = findViewById<EditText>(R.id.password)
         val guest = findViewById<TextView>(R.id.guest)
 
@@ -57,13 +57,13 @@ class Homepage : AppCompatActivity() {
         loginCard.startAnimation(fadeIn)
 
         signin.setOnClickListener {
-            val nameStr = username.text.toString().trim()
+            val nameStr = email.text.toString().trim()
             val passStr = password.text.toString().trim()
             
             // 3. Validation Logic
             if (nameStr.isEmpty()) {
-                username.error = "Username required"
-                username.requestFocus()
+                email.error = "Username required"
+                email.requestFocus()
                 return@setOnClickListener
             }
             if (passStr.isEmpty()) {
@@ -73,10 +73,10 @@ class Homepage : AppCompatActivity() {
             }
 
             val helper = ApiHelper(applicationContext)
-            val api = "https://paamajor1.alwaysdata.net/api/signin"
+            val api = "https://dancan1.alwaysdata.net/api/signin"
 
             val data = RequestParams()
-            data.put("username", nameStr)
+            data.put("email", nameStr)
             data.put("password", passStr)
 
             helper.post_login(api, data)

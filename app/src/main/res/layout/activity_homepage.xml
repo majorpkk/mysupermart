@@ -77,7 +77,7 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Username"
+                        android:hint="email"
                         android:textColorHint="#AAAAAA"
                         app:boxStrokeColor="@color/white"
                         app:hintTextColor="@color/white"
@@ -85,7 +85,7 @@
                         app:startIconTint="@color/white">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/username"
+                            android:id="@+id/email"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="text"

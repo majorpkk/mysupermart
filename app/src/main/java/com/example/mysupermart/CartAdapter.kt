@@ -41,7 +41,7 @@ class CartAdapter(
         holder.tvQuantity.text = quantity.toString()
         holder.tvSubtotal.text = "Subtotal: Ksh $subtotal"
 
-        val imageUrl = "https://paamajor1.alwaysdata.net/static/images/${product.product_photo}"
+        val imageUrl = "https://dancan1.alwaysdata.net/static/images/${product.product_photo}"
         Glide.with(holder.itemView.context)
             .load(imageUrl)
             .placeholder(R.drawable.ic_launcher_background)

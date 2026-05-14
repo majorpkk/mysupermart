@@ -1,0 +1,104 @@
+from flask import Flask, request, jsonify, send_from_directory
+import mysql.connector
+from mysql.connector import Error
+import os
+
+app = Flask(__name__)
+
+# --- Database Configuration ---
+db_config = {
+    'host': 'localhost',
+    'user': 'root',
+    'password': '',
+    'database': 'mysupermart_db'
+}
+
+def get_db_connection():
+    try:
+        connection = mysql.connector.connect(**db_config)
+        return connection
+    except Error as e:
+        print(f"Error connecting to MySQL: {e}")
+        return None
+
+# --- 1. User Signup ---
+@app.route('/api/signup', methods=['POST'])
+def signup():
+    data = request.form # Android app sends RequestParams (Form Data)
+    username = data.get('username')
+    email = data.get('email')
+    password = data.get('password')
+    phone = data.get('phone')
+
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    try:
+        query = "INSERT INTO users (username, email, password, phone) VALUES (%s, %s, %s, %s)"
+        cursor.execute(query, (username, email, password, phone))
+        conn.commit()
+        return jsonify({"message": "User registered successfully"}), 201
+    except Error as e:
+        return jsonify({"message": str(e)}), 400
+    finally:
+        cursor.close()
+        conn.close()
+
+# --- 2. User Signin ---
+@app.route('/api/signin', methods=['POST'])
+def signin():
+    data = request.form
+    email = data.get('email')
+    password = data.get('password')
+
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    query = "SELECT * FROM users WHERE email = %s AND password = %s"
+    cursor.execute(query, (email, password))
+    user = cursor.fetchone()
+
+    if user:
+        return jsonify({
+            "message": "Login successful",
+            "user": {
+                "username": user['username'],
+                "email": user['email']
+            }
+        }), 200
+    else:
+        return jsonify({"message": "Invalid credentials"}), 401
+
+# --- 3. Get Products ---
+@app.route('/api/get_product', methods=['GET'])
+def get_products():
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM products")
+    products = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return jsonify(products)
+
+# --- 4. M-Pesa Payment (STK Push Trigger) ---
+@app.route('/api/mpesa_payment', methods=['POST'])
+def mpesa_payment():
+    data = request.form
+    phone = data.get('phone')
+    amount = data.get('amount')
+    
+    # Here you would normally integrate with Safaricom Daraja API
+    print(f"Simulating M-Pesa STK Push for {phone} amount {amount}")
+    
+    return jsonify({
+        "message": "STK Push initiated successfully",
+        "status": "pending"
+    }), 200
+
+# --- 5. Serve Static Images ---
+# Ensure your images are in a folder named 'static/images'
+@app.route('/static/images/<filename>')
+def serve_image(filename):
+    return send_from_directory('static/images', filename)
+
+if __name__ == '__main__':
+    # Use 0.0.0.0 to allow connection from your Android device
+    app.run(host='0.0.0.0', port=5000, debug=True)
